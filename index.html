@@ -9,839 +9,684 @@
 
   :root {
     --yellow: #FFD700;
-    --blue-dark: #1a1a2e;
-    --blue-mid: #16213e;
-    --blue-card: #0f3460;
+    --bg: #1a1a2e;
+    --bg-mid: #16213e;
     --accent: #e94560;
     --text: #f0f0f0;
-    --text-dim: #a0aec0;
+    --text-dim: #8fa3b8;
     --green: #48bb78;
     --orange: #ed8936;
-    --purple: #9f7aea;
+    --purple: #b794f4;
+    --border: rgba(255,255,255,0.08);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--blue-dark);
+    background: var(--bg);
     color: var(--text);
     font-family: 'Syne', sans-serif;
     line-height: 1.6;
-    padding: 2rem 1rem;
+    padding: 1.25rem 1rem 3rem;
+    max-width: 640px;
+    margin: 0 auto;
   }
 
   .header {
     text-align: center;
-    padding: 3rem 1rem 2rem;
-    position: relative;
-  }
-
-  .header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 600px; height: 300px;
-    background: radial-gradient(ellipse, rgba(255,215,0,0.12) 0%, transparent 70%);
-    pointer-events: none;
+    padding: 2rem 0 1.5rem;
   }
 
   .badge {
     display: inline-block;
     background: var(--yellow);
-    color: var(--blue-dark);
+    color: #111;
     font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 2px;
-    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: 2rem;
     font-weight: 800;
     color: var(--yellow);
     line-height: 1.1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
 
   .subtitle {
     color: var(--text-dim);
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-family: 'Space Mono', monospace;
   }
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .section {
-    margin: 2.5rem 0;
-  }
+  .section { margin: 2rem 0; }
 
   .section-title {
-    font-size: 1.3rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--yellow);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255,215,0,0.2);
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(255,215,0,0.18);
   }
 
   .section-title .num {
     background: var(--yellow);
-    color: var(--blue-dark);
+    color: #111;
     font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    width: 28px; height: 28px;
+    width: 24px; height: 24px;
     display: flex; align-items: center; justify-content: center;
     border-radius: 4px;
     flex-shrink: 0;
   }
 
-  /* TERM CARDS */
+  /* TERMS — 2 cols */
   .terms-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
   }
 
   .term-card {
-    background: var(--blue-mid);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 10px;
-    padding: 1.1rem 1.25rem;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .term-card:hover {
-    border-color: rgba(255,215,0,0.4);
-    transform: translateY(-2px);
+    background: var(--bg-mid);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.8rem 0.9rem;
   }
 
   .term-name {
     font-family: 'Space Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: var(--yellow);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
+    word-break: break-word;
   }
 
   .term-def {
-    font-size: 0.88rem;
+    font-size: 0.8rem;
     color: var(--text-dim);
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
-  /* COMPARISON TABLE */
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-    background: var(--blue-mid);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .comparison-table th {
-    background: var(--blue-card);
-    color: var(--yellow);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-align: left;
-    padding: 0.75rem 1rem;
-    letter-spacing: 0.5px;
-  }
-
-  .comparison-table td {
-    padding: 0.7rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    color: var(--text);
-    vertical-align: top;
-  }
-
-  .comparison-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  .comparison-table tr:hover td {
-    background: rgba(255,215,0,0.04);
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-family: 'Space Mono', monospace;
-    font-weight: 700;
-  }
-
-  .tag-green { background: rgba(72,187,120,0.15); color: var(--green); }
-  .tag-orange { background: rgba(237,137,54,0.15); color: var(--orange); }
-  .tag-purple { background: rgba(159,122,234,0.15); color: var(--purple); }
-  .tag-red { background: rgba(233,69,96,0.15); color: var(--accent); }
-
-  /* WHY BLOCKS */
-  .why-grid {
-    display: grid;
-    gap: 0.85rem;
-  }
+  /* WHY */
+  .why-grid { display: grid; gap: 0.7rem; }
 
   .why-block {
-    background: var(--blue-mid);
+    background: var(--bg-mid);
     border-left: 3px solid var(--yellow);
     border-radius: 0 8px 8px 0;
-    padding: 1rem 1.25rem;
+    padding: 0.9rem 1rem;
   }
 
   .why-question {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-family: 'Space Mono', monospace;
     color: var(--yellow);
     font-weight: 700;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.3rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
   }
 
-  .why-answer {
-    font-size: 0.9rem;
-    color: var(--text);
-  }
+  .why-answer { font-size: 0.85rem; color: var(--text); }
 
   .why-vs {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: var(--accent);
-    margin-top: 0.35rem;
+    margin-top: 0.3rem;
   }
 
-  /* ARCH CARDS */
-  .arch-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1rem;
-  }
+  /* ARCH */
+  .arch-grid { display: grid; gap: 0.7rem; }
 
   .arch-card {
-    background: var(--blue-mid);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 10px;
-    padding: 1.25rem;
+    background: var(--bg-mid);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
   }
 
-  .arch-card .arch-title {
+  .arch-title {
     font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .arch-card .arch-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .arch-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
-  .arch-card ul {
-    list-style: none;
-    font-size: 0.85rem;
-    color: var(--text-dim);
-  }
+  .arch-card ul { list-style: none; font-size: 0.82rem; color: var(--text-dim); }
 
-  .arch-card ul li {
-    padding: 0.2rem 0;
-    padding-left: 1rem;
-    position: relative;
-  }
+  .arch-card ul li { padding: 0.15rem 0 0.15rem 1rem; position: relative; }
 
-  .arch-card ul li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--yellow);
-    font-weight: 700;
-  }
+  .arch-card ul li::before { content: '›'; position: absolute; left: 0; color: var(--yellow); font-weight: 700; }
 
-  .arch-card .verdict {
-    margin-top: 0.75rem;
-    padding: 0.5rem 0.75rem;
+  .verdict {
+    margin-top: 0.65rem;
+    padding: 0.45rem 0.75rem;
     background: rgba(255,215,0,0.07);
     border-radius: 6px;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--text);
     font-style: italic;
   }
 
-  /* AUGMENT GRID */
+  /* COMPARE — card-based, no table */
+  .compare-grid { display: grid; gap: 0.5rem; margin-top: 1rem; }
+
+  .compare-row {
+    background: var(--bg-mid);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.7rem 0.9rem;
+  }
+
+  .compare-aspect {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 0.4rem;
+  }
+
+  .compare-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .compare-cell {
+    background: rgba(255,255,255,0.04);
+    border-radius: 5px;
+    padding: 0.35rem 0.4rem;
+    text-align: center;
+  }
+
+  .compare-label {
+    font-size: 0.62rem;
+    color: var(--text-dim);
+    font-family: 'Space Mono', monospace;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .compare-value { font-size: 0.75rem; color: var(--text); line-height: 1.3; word-break: break-word; }
+
+  .tag { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 0.68rem; font-family: 'Space Mono', monospace; font-weight: 700; }
+  .tag-green { background: rgba(72,187,120,0.15); color: var(--green); }
+  .tag-orange { background: rgba(237,137,54,0.15); color: var(--orange); }
+  .tag-red { background: rgba(233,69,96,0.15); color: var(--accent); }
+
+  /* HYPER — card list */
+  .hyper-list { display: grid; gap: 0.6rem; }
+
+  .hyper-item {
+    background: var(--bg-mid);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 0.75rem;
+    align-items: start;
+  }
+
+  .hyper-key {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--yellow);
+    padding-top: 0.05rem;
+    white-space: nowrap;
+  }
+
+  .hyper-val-wrap { display: flex; flex-direction: column; gap: 0.2rem; }
+
+  .hyper-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--orange);
+  }
+
+  .hyper-why { font-size: 0.8rem; color: var(--text-dim); line-height: 1.45; }
+
+  /* AUG — 2 cols */
   .aug-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
   }
 
   .aug-item {
-    background: var(--blue-mid);
-    border-radius: 8px;
-    padding: 0.9rem 1rem;
-    border: 1px solid rgba(255,255,255,0.07);
+    background: var(--bg-mid);
+    border-radius: 7px;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--border);
   }
 
   .aug-tech {
     font-family: 'Space Mono', monospace;
-    font-size: 0.82rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: var(--purple);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
   }
 
-  .aug-reason {
-    font-size: 0.83rem;
-    color: var(--text-dim);
-  }
+  .aug-reason { font-size: 0.78rem; color: var(--text-dim); }
 
   /* TIPS */
-  .tip-list {
-    display: grid;
-    gap: 0.75rem;
-  }
+  .tip-list { display: grid; gap: 0.65rem; }
 
   .tip {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.65rem;
     align-items: flex-start;
-    background: var(--blue-mid);
+    background: var(--bg-mid);
     border-radius: 8px;
-    padding: 0.9rem 1rem;
+    padding: 0.8rem 0.9rem;
   }
 
-  .tip-icon {
-    font-size: 1.1rem;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .tip-text {
-    font-size: 0.88rem;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  .tip-text strong {
+  .tip-q {
+    font-size: 0.7rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
     color: var(--yellow);
+    flex-shrink: 0;
+    padding-top: 0.1rem;
   }
+
+  .tip-body { font-size: 0.83rem; color: var(--text); line-height: 1.5; }
+  .tip-body strong { color: var(--yellow); }
 
   /* CONCLUSIONS */
-  .conc-list {
-    display: grid;
-    gap: 0.75rem;
-  }
+  .conc-list { display: grid; gap: 0.65rem; }
 
   .conc-item {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.65rem;
     align-items: flex-start;
-    padding: 1rem 1.25rem;
-    background: var(--blue-mid);
+    padding: 0.85rem 1rem;
+    background: var(--bg-mid);
     border-radius: 8px;
     border-left: 3px solid var(--green);
   }
 
-  .conc-check {
-    color: var(--green);
-    font-weight: 700;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
+  .conc-check { color: var(--green); font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .conc-text { font-size: 0.85rem; color: var(--text); line-height: 1.5; }
 
-  .conc-text {
-    font-size: 0.9rem;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid rgba(255,255,255,0.07);
-    margin: 2.5rem 0;
-  }
+  .divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1.75rem 0; }
 
   .footer {
     text-align: center;
     font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    padding: 2rem 0 1rem;
-  }
-
-  .highlight {
-    color: var(--yellow);
-    font-weight: 700;
-  }
-
-  /* HYPER TABLE */
-  .hyper-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-    border-radius: 10px;
-    overflow: hidden;
-    background: var(--blue-mid);
-  }
-  .hyper-table th {
-    background: var(--blue-card);
-    color: var(--yellow);
-    font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.7rem 1rem;
-    text-align: left;
-  }
-  .hyper-table td {
-    padding: 0.65rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    vertical-align: top;
-    color: var(--text);
-  }
-  .hyper-table tr:last-child td { border-bottom: none; }
-  .hyper-table td:first-child {
-    font-family: 'Space Mono', monospace;
-    color: var(--yellow);
-    font-size: 0.8rem;
-    white-space: nowrap;
-  }
-  .hyper-table td:nth-child(2) {
-    color: var(--orange);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.82rem;
+    color: var(--text-dim);
+    padding: 1.5rem 0 0.5rem;
   }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="badge">Deep Learning · DLY0100 · Duoc UC</div>
     <h1>Guía de Estudio</h1>
-    <p class="subtitle">CNN Simpsons — Evaluación Parcial N°2</p>
+    <p class="subtitle">CNN Simpsons — Parcial N°2</p>
   </div>
 
-  <!-- SECCIÓN 1: TÉRMINOS CLAVE -->
+  <!-- 1. TÉRMINOS -->
   <div class="section">
     <div class="section-title"><span class="num">1</span> Términos que debes saber</div>
     <div class="terms-grid">
-
       <div class="term-card">
-        <div class="term-name">CNN (Red Neuronal Convolucional)</div>
-        <div class="term-def">Arquitectura de red neuronal diseñada para procesar datos con estructura de grilla (imágenes). Aprende jerarquías visuales mediante filtros convolucionales.</div>
+        <div class="term-name">CNN</div>
+        <div class="term-def">Red neuronal para imágenes. Aprende jerarquías visuales con filtros convolucionales.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">Conv2D</div>
-        <div class="term-def">Capa convolucional 2D. Aplica filtros sobre la imagen para detectar bordes, texturas, y luego formas complejas en capas más profundas.</div>
+        <div class="term-def">Capa convolucional. Detecta bordes, texturas y formas en capas progresivas.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">BatchNormalization (BN)</div>
-        <div class="term-def">Normaliza las activaciones de cada mini-batch. Estabiliza y acelera el entrenamiento, reduciendo la dependencia de la inicialización.</div>
+        <div class="term-name">BatchNorm</div>
+        <div class="term-def">Normaliza activaciones por mini-batch. Estabiliza y acelera el entrenamiento.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">MaxPooling / GlobalAveragePooling</div>
-        <div class="term-def">Reducen dimensionalidad espacial. MaxPooling toma el valor máximo; GlobalAveragePooling promedia toda la feature map → un solo valor por canal.</div>
+        <div class="term-name">MaxPooling</div>
+        <div class="term-def">Reduce dimensionalidad tomando el valor máximo de cada región espacial.</div>
       </div>
-
+      <div class="term-card">
+        <div class="term-name">GlobalAvgPooling</div>
+        <div class="term-def">Promedia toda la feature map a un único valor. Reduce parámetros y regulariza.</div>
+      </div>
       <div class="term-card">
         <div class="term-name">Dropout</div>
-        <div class="term-def">Desactiva neuronas aleatoriamente durante el entrenamiento. Técnica de regularización que previene el overfitting.</div>
+        <div class="term-def">Desactiva neuronas al azar en entrenamiento. Previene overfitting.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">Softmax</div>
-        <div class="term-def">Función de activación de la capa final para clasificación multiclase. Convierte logits en probabilidades que suman 1.0.</div>
+        <div class="term-def">Activa la capa final. Convierte logits en probabilidades que suman 1.0.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">Skip Connections (conexiones residuales)</div>
-        <div class="term-def">Conexiones que "saltan" una o más capas y suman la entrada directamente a la salida del bloque. Clave en ResNet.</div>
+        <div class="term-name">Skip Connections</div>
+        <div class="term-def">Conexiones que saltan capas y suman la entrada a la salida. Clave en ResNet.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">Degradation Problem</div>
-        <div class="term-def">En redes muy profundas sin skip connections, el accuracy empeora al agregar capas. PlainNet lo sufre; ResNet lo resuelve.</div>
+        <div class="term-def">Más capas sin skip puede empeorar el accuracy. PlainNet lo sufre; ResNet lo resuelve.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">Overfitting / Sobreentrenamiento</div>
-        <div class="term-def">Cuando el modelo memoriza el set de entrenamiento y falla en datos nuevos. Se evidencia con baja brecha train-val en accuracy.</div>
+        <div class="term-name">Overfitting</div>
+        <div class="term-def">El modelo memoriza train y falla en datos nuevos. Brecha alta train-val lo evidencia.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">Data Augmentation</div>
-        <div class="term-def">Generar variaciones artificiales de las imágenes de entrenamiento (rotación, flip, zoom) para aumentar la diversidad sin obtener más datos reales.</div>
+        <div class="term-def">Variaciones artificiales de imágenes (flip, zoom, rotación) sin más datos reales.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">Accuracy</div>
-        <div class="term-def">Proporción de predicciones correctas sobre el total. Métrica global del modelo.</div>
+        <div class="term-def">Predicciones correctas / total. Métrica global del modelo.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">F1-Score (Macro / Weighted)</div>
-        <div class="term-def">Media harmónica de Precision y Recall. Macro: promedio sin ponderar por clase. Weighted: ponderado por soporte de cada clase.</div>
+        <div class="term-name">F1-Score</div>
+        <div class="term-def">Media harmónica de Precision y Recall. Macro = sin ponderar; Weighted = por soporte.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">Precision y Recall</div>
-        <div class="term-def">Precision: de los que predije como X, ¿cuántos son X? Recall: de todos los X reales, ¿cuántos detecté?</div>
+        <div class="term-name">Precision / Recall</div>
+        <div class="term-def">Precision: ¿cuántos de mis predichos son correctos? Recall: ¿cuántos correctos detecté?</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">Confusion Matrix (Matriz de Confusión)</div>
-        <div class="term-def">Tabla que muestra predicciones vs. etiquetas reales por clase. Normalizada, muestra el recall por clase (diagonal = aciertos).</div>
+        <div class="term-name">Confusion Matrix</div>
+        <div class="term-def">Tabla predicciones vs etiquetas reales. Diagonal normalizada = recall por clase.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">Adam Optimizer</div>
-        <div class="term-def">Optimizador de gradiente adaptivo. Ajusta la tasa de aprendizaje por parámetro usando momentum y RMS. Más eficiente que SGD estándar.</div>
+        <div class="term-name">Adam</div>
+        <div class="term-def">Optimizador con lr adaptivo por parámetro. Más eficiente que SGD estándar.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">Learning Rate (lr)</div>
-        <div class="term-def">Tamaño del paso en cada actualización de pesos. Muy alto → inestable; muy bajo → convergencia lenta.</div>
+        <div class="term-name">Learning Rate</div>
+        <div class="term-def">Tamaño del paso al actualizar pesos. Alto = inestable; bajo = lento.</div>
       </div>
-
       <div class="term-card">
-        <div class="term-name">Categorical Cross-Entropy</div>
-        <div class="term-def">Función de pérdida para clasificación multiclase con one-hot encoding. Penaliza predicciones con baja probabilidad en la clase correcta.</div>
+        <div class="term-name">Categorical CE</div>
+        <div class="term-def">Loss para multiclase con one-hot. Penaliza baja confianza en la clase correcta.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">EarlyStopping</div>
-        <div class="term-def">Detiene el entrenamiento si una métrica monitoreada (ej. val_loss) no mejora después de N épocas (patience). Evita sobreentrenamiento.</div>
+        <div class="term-def">Detiene el train si val_loss no mejora en N épocas. Evita sobreentrenamiento.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">ReduceLROnPlateau</div>
-        <div class="term-def">Callback que reduce el learning rate por un factor cuando la métrica se estanca. Permite ajuste fino automático.</div>
+        <div class="term-def">Reduce lr por un factor cuando el entrenamiento se estanca. Ajuste fino automático.</div>
       </div>
-
-      <div class="term-card">
-        <div class="term-name">ImageDataGenerator</div>
-        <div class="term-def">Clase de Keras que genera augmentations en tiempo real durante el entrenamiento, sin necesidad de guardar imágenes adicionales en disco.</div>
-      </div>
-
-      <div class="term-card">
-        <div class="term-name">Transfer Learning</div>
-        <div class="term-def">Usar un modelo preentrenado (ej. EfficientNet) como punto de partida. Reutiliza características aprendidas en grandes datasets. Mencionado como mejora futura.</div>
-      </div>
-
       <div class="term-card">
         <div class="term-name">One-hot encoding</div>
-        <div class="term-def">Representar la clase como vector binario donde solo el índice correcto es 1. Necesario para categorical cross-entropy.</div>
+        <div class="term-def">Vector donde solo el índice correcto es 1. Requerido por Categorical CE.</div>
       </div>
-
+      <div class="term-card">
+        <div class="term-name">Transfer Learning</div>
+        <div class="term-def">Usar modelo preentrenado (EfficientNet) como base. Mencionado como mejora futura.</div>
+      </div>
       <div class="term-card">
         <div class="term-name">Batch Size</div>
-        <div class="term-def">Número de ejemplos procesados por iteración antes de actualizar los pesos. Afecta la estabilidad del gradiente y velocidad.</div>
+        <div class="term-def">Ejemplos por iteración antes de actualizar pesos. Afecta estabilidad y velocidad.</div>
       </div>
-
       <div class="term-card">
         <div class="term-name">Epoch</div>
-        <div class="term-def">Una pasada completa por todo el dataset de entrenamiento. Se usan múltiples épocas para que el modelo aprenda iterativamente.</div>
+        <div class="term-def">Una pasada completa por todo el dataset de entrenamiento.</div>
       </div>
-
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- SECCIÓN 2: HERRAMIENTAS Y POR QUÉ -->
+  <!-- 2. HERRAMIENTAS -->
   <div class="section">
     <div class="section-title"><span class="num">2</span> Herramientas — ¿por qué cada una?</div>
     <div class="why-grid">
-
       <div class="why-block">
         <div class="why-question">¿Por qué TensorFlow / Keras?</div>
-        <div class="why-answer">API de alto nivel que simplifica la construcción de modelos. Tiene integración nativa con GPU en Google Colab y capas predefinidas (Conv2D, BatchNorm, etc.) listas para usar.</div>
-        <div class="why-vs">❌ No PyTorch: ambos son válidos, pero Keras ofrece una API más simple y rápida de prototipar para este proyecto.</div>
+        <div class="why-answer">API de alto nivel, integración nativa con GPU en Colab y capas predefinidas (Conv2D, BatchNorm) listas para usar.</div>
+        <div class="why-vs">❌ No PyTorch: ambos son válidos, pero Keras es más rápida de prototipar.</div>
       </div>
-
       <div class="why-block">
         <div class="why-question">¿Por qué OpenCV (cv2)?</div>
-        <div class="why-answer">Librería estándar para lectura y resize eficiente de imágenes en batch. Optimizada para operaciones de visión computacional en memoria.</div>
-        <div class="why-vs">❌ No PIL/Pillow puro: cv2 es más eficiente para procesar grandes volúmenes de imágenes (~20k imágenes).</div>
+        <div class="why-answer">Librería estándar para lectura y resize eficiente de imágenes en batch. Optimizada para grandes volúmenes.</div>
+        <div class="why-vs">❌ No PIL puro: cv2 es más eficiente procesando ~20k imágenes.</div>
       </div>
-
       <div class="why-block">
         <div class="why-question">¿Por qué scikit-learn?</div>
-        <div class="why-answer">Provee las métricas de evaluación necesarias: accuracy_score, f1_score, precision, recall, confusion_matrix. No se usa para entrenar el modelo, solo para medirlo.</div>
-        <div class="why-vs">❌ No calcular manualmente: sklearn tiene implementaciones probadas y con soporte para multiclase.</div>
+        <div class="why-answer">Métricas de evaluación: accuracy, f1_score, precision, recall, confusion_matrix. Solo para medir, no para entrenar.</div>
+        <div class="why-vs">❌ No calcular a mano: sklearn tiene implementaciones probadas para multiclase.</div>
       </div>
-
       <div class="why-block">
         <div class="why-question">¿Por qué ImageDataGenerator?</div>
-        <div class="why-answer">Aplica data augmentation en tiempo real durante el entrenamiento. No requiere guardar imágenes adicionales en disco; las transformaciones se generan al vuelo.</div>
-        <div class="why-vs">❌ No augmentar offline: ocuparía mucho más almacenamiento y tiempo de preprocesamiento sin beneficio adicional.</div>
+        <div class="why-answer">Augmentation en tiempo real: no guarda imágenes en disco, genera variaciones únicas por época automáticamente.</div>
+        <div class="why-vs">❌ No offline: ocuparía mucho más almacenamiento sin beneficio adicional.</div>
       </div>
-
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- SECCIÓN 3: ARQUITECTURAS -->
+  <!-- 3. ARQUITECTURAS -->
   <div class="section">
-    <div class="section-title"><span class="num">3</span> Arquitecturas CNN — Comparación</div>
+    <div class="section-title"><span class="num">3</span> Arquitecturas — comparación</div>
     <div class="arch-grid">
-
       <div class="arch-card">
-        <div class="arch-title">
-          <span class="arch-dot" style="background:#48bb78"></span>
-          CNN Propia
-        </div>
+        <div class="arch-title"><span class="arch-dot" style="background:#48bb78"></span> CNN Propia</div>
         <ul>
-          <li>3 bloques: Conv → BN → Pool → Dropout</li>
+          <li>3 bloques Conv → BN → Pool → Dropout</li>
           <li>Filtros: 32 → 64 → 128</li>
-          <li>Capa densa: 256 → 18 (softmax)</li>
+          <li>Densa: 256 → 18 (softmax)</li>
         </ul>
-        <div class="verdict">✦ Diseño compacto, fácil de interpretar. Sirve como <strong>baseline</strong> propio para comparar.</div>
+        <div class="verdict">Diseño compacto y legible. Sirve como <em>baseline</em> para comparar.</div>
       </div>
-
       <div class="arch-card">
-        <div class="arch-title">
-          <span class="arch-dot" style="background:#ed8936"></span>
-          Plain Net
-        </div>
+        <div class="arch-title"><span class="arch-dot" style="background:#ed8936"></span> Plain Net</div>
         <ul>
           <li>4 bloques convolucionales profundos</li>
           <li>Filtros: 64 → 64 → 128 → 128</li>
           <li>GlobalAveragePooling al final</li>
           <li>Sin skip connections</li>
         </ul>
-        <div class="verdict">✦ Demuestra el <strong>degradation problem</strong>: agregar profundidad sin skip connections no siempre mejora.</div>
+        <div class="verdict">Demuestra el <em>degradation problem</em>: más profundidad sin skip no garantiza mejora.</div>
       </div>
-
       <div class="arch-card">
-        <div class="arch-title">
-          <span class="arch-dot" style="background:#e94560"></span>
-          ResNet-style ⭐
-        </div>
+        <div class="arch-title"><span class="arch-dot" style="background:#e94560"></span> ResNet-style ⭐</div>
         <ul>
           <li>Bloques residuales con skip connections</li>
           <li>Filtros: 32 → 64 → 128 → 256</li>
           <li>GlobalAveragePooling al final</li>
         </ul>
-        <div class="verdict">✦ Mejor rendimiento. Skip connections permiten flujo directo de gradientes, resolviendo el degradation problem. Estado del arte.</div>
+        <div class="verdict">Mejor accuracy y F1. Las skip connections estabilizan el flujo de gradientes.</div>
       </div>
-
     </div>
 
-    <!-- Tabla comparativa conceptual -->
-    <div style="margin-top:1.25rem;">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Aspecto</th>
-            <th>CNN Propia</th>
-            <th>Plain Net</th>
-            <th>ResNet-style</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Profundidad</td>
-            <td>Baja (3 bloques)</td>
-            <td>Media (4 bloques)</td>
-            <td>Media-alta (4 bloques residuales)</td>
-          </tr>
-          <tr>
-            <td>Skip connections</td>
-            <td><span class="tag tag-red">No</span></td>
-            <td><span class="tag tag-red">No</span></td>
-            <td><span class="tag tag-green">Sí</span></td>
-          </tr>
-          <tr>
-            <td>Degradation problem</td>
-            <td>No aplica (poco profunda)</td>
-            <td><span class="tag tag-orange">Lo sufre</span></td>
-            <td><span class="tag tag-green">Lo resuelve</span></td>
-          </tr>
-          <tr>
-            <td>Pooling final</td>
-            <td>MaxPooling → Flatten</td>
-            <td>GlobalAveragePooling</td>
-            <td>GlobalAveragePooling</td>
-          </tr>
-          <tr>
-            <td>Resultado esperado</td>
-            <td>Baseline aceptable</td>
-            <td>Inferior a ResNet</td>
-            <td><span class="tag tag-green">Mejor accuracy y F1</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="compare-grid">
+      <div class="compare-row">
+        <div class="compare-aspect">Skip connections</div>
+        <div class="compare-cols">
+          <div class="compare-cell"><span class="compare-label">CNN Propia</span><span class="compare-value"><span class="tag tag-red">No</span></span></div>
+          <div class="compare-cell"><span class="compare-label">Plain Net</span><span class="compare-value"><span class="tag tag-red">No</span></span></div>
+          <div class="compare-cell"><span class="compare-label">ResNet</span><span class="compare-value"><span class="tag tag-green">Sí</span></span></div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-aspect">Degradation problem</div>
+        <div class="compare-cols">
+          <div class="compare-cell"><span class="compare-label">CNN Propia</span><span class="compare-value" style="color:var(--text-dim)">No aplica</span></div>
+          <div class="compare-cell"><span class="compare-label">Plain Net</span><span class="compare-value"><span class="tag tag-orange">Lo sufre</span></span></div>
+          <div class="compare-cell"><span class="compare-label">ResNet</span><span class="compare-value"><span class="tag tag-green">Lo resuelve</span></span></div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-aspect">Pooling final</div>
+        <div class="compare-cols">
+          <div class="compare-cell"><span class="compare-label">CNN Propia</span><span class="compare-value" style="color:var(--text-dim)">MaxPool + Flatten</span></div>
+          <div class="compare-cell"><span class="compare-label">Plain Net</span><span class="compare-value" style="color:var(--text-dim)">GlobalAvgPool</span></div>
+          <div class="compare-cell"><span class="compare-label">ResNet</span><span class="compare-value" style="color:var(--text-dim)">GlobalAvgPool</span></div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-aspect">Resultado esperado</div>
+        <div class="compare-cols">
+          <div class="compare-cell"><span class="compare-label">CNN Propia</span><span class="compare-value" style="color:var(--text-dim)">Baseline</span></div>
+          <div class="compare-cell"><span class="compare-label">Plain Net</span><span class="compare-value" style="color:var(--accent)">Inferior</span></div>
+          <div class="compare-cell"><span class="compare-label">ResNet</span><span class="compare-value"><span class="tag tag-green">Mejor</span></span></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- SECCIÓN 4: HIPERPARÁMETROS -->
+  <!-- 4. HIPERPARÁMETROS -->
   <div class="section">
-    <div class="section-title"><span class="num">4</span> Hiperparámetros — valor y justificación</div>
-    <table class="hyper-table">
-      <thead>
-        <tr>
-          <th>Hiperparámetro</th>
-          <th>Valor</th>
-          <th>¿Por qué este valor?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Optimizer</td>
-          <td>Adam</td>
-          <td>Ajuste adaptivo del lr por parámetro. Converge más rápido que SGD estándar. El estándar de facto en deep learning.</td>
-        </tr>
-        <tr>
-          <td>Learning Rate</td>
-          <td>0.001</td>
-          <td>Valor por defecto recomendado para Adam. Balance entre velocidad de convergencia y estabilidad. Se compara también 0.0005.</td>
-        </tr>
-        <tr>
-          <td>Batch Size</td>
-          <td>64</td>
-          <td>Balance entre velocidad de GPU y estabilidad del gradiente. Muy pequeño = ruido; muy grande = menos generalización.</td>
-        </tr>
-        <tr>
-          <td>Loss Function</td>
-          <td>Categorical CE</td>
-          <td>Correcta para clasificación multiclase con one-hot encoding. Penaliza predicciones incorrectas con alta confianza.</td>
-        </tr>
-        <tr>
-          <td>Épocas máx.</td>
-          <td>50 + EarlyStopping</td>
-          <td>El límite de 50 evita entrenamientos eternos. EarlyStopping con patience=8 detiene si no mejora, evitando sobreentrenamiento.</td>
-        </tr>
-        <tr>
-          <td>ReduceLROnPlateau</td>
-          <td>factor=0.5, patience=4</td>
-          <td>Reduce el lr a la mitad cuando el entrenamiento se estanca por 4 épocas. Permite ajuste fino automático sin intervención manual.</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="section-title"><span class="num">4</span> Hiperparámetros — valor y por qué</div>
+    <div class="hyper-list">
+      <div class="hyper-item">
+        <div class="hyper-key">Optimizer</div>
+        <div class="hyper-val-wrap">
+          <div class="hyper-val">Adam</div>
+          <div class="hyper-why">Ajuste adaptivo del lr por parámetro. Converge más rápido que SGD. Estándar en deep learning.</div>
+        </div>
+      </div>
+      <div class="hyper-item">
+        <div class="hyper-key">lr</div>
+        <div class="hyper-val-wrap">
+          <div class="hyper-val">0.001</div>
+          <div class="hyper-why">Valor por defecto de Adam. Balance velocidad-estabilidad. También se compara 0.0005.</div>
+        </div>
+      </div>
+      <div class="hyper-item">
+        <div class="hyper-key">Batch Size</div>
+        <div class="hyper-val-wrap">
+          <div class="hyper-val">64</div>
+          <div class="hyper-why">Balance velocidad GPU vs estabilidad del gradiente. Muy pequeño = ruidoso; muy grande = menos generalización.</div>
+        </div>
+      </div>
+      <div class="hyper-item">
+        <div class="hyper-key">Loss</div>
+        <div class="hyper-val-wrap">
+          <div class="hyper-val">Categorical CE</div>
+          <div class="hyper-why">Correcta para multiclase con one-hot. Penaliza predicciones incorrectas con alta confianza.</div>
+        </div>
+      </div>
+      <div class="hyper-item">
+        <div class="hyper-key">Épocas</div>
+        <div class="hyper-val-wrap">
+          <div class="hyper-val">50 + EarlyStopping</div>
+          <div class="hyper-why">El límite evita entrenamientos eternos. EarlyStopping (patience=8) detiene si val no mejora.</div>
+        </div>
+      </div>
+      <div class="hyper-item">
+        <div class="hyper-key">ReduceLR</div>
+        <div class="hyper-val-wrap">
+          <div class="hyper-val">factor=0.5, pat=4</div>
+          <div class="hyper-why">Reduce lr a la mitad si no mejora en 4 épocas. Ajuste fino automático sin intervención manual.</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <hr class="divider">
 
-  <!-- SECCIÓN 5: DATA AUGMENTATION -->
+  <!-- 5. DATA AUGMENTATION -->
   <div class="section">
     <div class="section-title"><span class="num">5</span> Data Augmentation — técnica y razón</div>
     <div class="aug-grid">
       <div class="aug-item">
         <div class="aug-tech">Rotación ±15°</div>
-        <div class="aug-reason">Los personajes pueden aparecer levemente inclinados en las escenas de la serie.</div>
+        <div class="aug-reason">Personajes pueden aparecer levemente inclinados en escena.</div>
       </div>
       <div class="aug-item">
         <div class="aug-tech">Flip horizontal</div>
-        <div class="aug-reason">Aumenta variabilidad sin alterar la identidad del personaje (un Bart volteado sigue siendo Bart).</div>
+        <div class="aug-reason">Bart volteado sigue siendo Bart — variabilidad sin perder identidad.</div>
       </div>
       <div class="aug-item">
         <div class="aug-tech">Zoom ±10%</div>
-        <div class="aug-reason">Simula distintas escalas de captura dentro de un mismo encuadre.</div>
+        <div class="aug-reason">Simula distintas escalas de captura en un encuadre.</div>
       </div>
       <div class="aug-item">
         <div class="aug-tech">Desplazamiento ±10%</div>
-        <div class="aug-reason">El personaje no siempre aparece perfectamente centrado en la imagen.</div>
+        <div class="aug-reason">El personaje no siempre aparece perfectamente centrado.</div>
       </div>
       <div class="aug-item">
         <div class="aug-tech">Shear ±10°</div>
-        <div class="aug-reason">Variaciones leves de perspectiva propias de la animación 2D de la serie.</div>
+        <div class="aug-reason">Variaciones de perspectiva propias de la animación 2D.</div>
       </div>
       <div class="aug-item">
         <div class="aug-tech">Brillo ×0.8–1.2</div>
-        <div class="aug-reason">Variabilidad de iluminación entre distintos episodios o escenas.</div>
+        <div class="aug-reason">Variabilidad de iluminación entre episodios.</div>
       </div>
     </div>
-    <div class="why-block" style="margin-top:1rem;">
-      <div class="why-question">¿Por qué augmentation en tiempo real y no offline?</div>
-      <div class="why-answer">Genera variaciones únicas por época, maximizando la diversidad que ve el modelo. No ocupa espacio extra en disco. ImageDataGenerator lo hace automáticamente con Keras.</div>
+    <div class="why-block" style="margin-top:0.75rem;">
+      <div class="why-question">¿Por qué augmentation en tiempo real?</div>
+      <div class="why-answer">Genera variaciones únicas por época, maximizando diversidad sin ocupar espacio extra en disco. ImageDataGenerator lo hace automáticamente con Keras.</div>
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- SECCIÓN 6: PREGUNTAS FRECUENTES -->
+  <!-- 6. PREGUNTAS -->
   <div class="section">
-    <div class="section-title"><span class="num">6</span> Preguntas que te pueden hacer — y cómo responderlas</div>
+    <div class="section-title"><span class="num">6</span> Preguntas que te pueden hacer</div>
     <div class="tip-list">
-
       <div class="tip">
-        <div class="tip-icon">❓</div>
-        <div class="tip-text"><strong>¿Por qué usar CNNs y no una red densa (MLP)?</strong><br>
-        Las CNNs capturan jerarquías visuales locales (bordes → texturas → formas → objetos) mediante filtros compartidos. Una red densa trataría cada píxel independientemente, perdiendo estructura espacial y requiriendo millones de parámetros para el mismo resultado.</div>
+        <div class="tip-q">Q1</div>
+        <div class="tip-body"><strong>¿Por qué CNNs y no red densa?</strong><br>Las CNNs capturan jerarquías visuales locales (bordes → texturas → formas) con filtros compartidos. Una red densa trata cada píxel independientemente, pierde estructura espacial y necesita millones de parámetros más.</div>
       </div>
-
       <div class="tip">
-        <div class="tip-icon">❓</div>
-        <div class="tip-text"><strong>¿Qué resuelven las skip connections de ResNet?</strong><br>
-        El <em>degradation problem</em>: en redes profundas, los gradientes pueden desvanecerse o distorsionarse (vanishing gradient). Las skip connections crean un camino directo para el flujo de gradientes, permitiendo entrenar redes más profundas sin pérdida de rendimiento.</div>
+        <div class="tip-q">Q2</div>
+        <div class="tip-body"><strong>¿Qué resuelven las skip connections?</strong><br>El vanishing gradient: en redes profundas los gradientes se desvanecen al propagarse. Las skip connections crean un camino directo para el gradiente, permitiendo entrenar redes más profundas sin degradación.</div>
       </div>
-
       <div class="tip">
-        <div class="tip-icon">❓</div>
-        <div class="tip-text"><strong>¿Por qué PlainNet no supera a ResNet aunque es más profunda?</strong><br>
-        Sufre el degradation problem. Sin skip connections, agregar más capas no garantiza mejor rendimiento — de hecho puede empeorarlo. ResNet con skip connections resuelve esto y justifica su mayor accuracy y F1.</div>
+        <div class="tip-q">Q3</div>
+        <div class="tip-body"><strong>¿Por qué PlainNet no supera a ResNet siendo igual de profunda?</strong><br>Sufre el degradation problem. Sin skip connections, más capas no garantiza mejor rendimiento. ResNet lo resuelve con sus bloques residuales.</div>
       </div>
-
       <div class="tip">
-        <div class="tip-icon">❓</div>
-        <div class="tip-text"><strong>¿Qué mide la matriz de confusión normalizada?</strong><br>
-        Muestra el recall por clase en la diagonal: qué fracción de los ejemplos reales de cada clase fueron correctamente predichos. Las clases con baja diagonal (bajo recall) son las que el modelo confunde más — candidatas a mejoras con balanceo de clases o augmentation específico.</div>
+        <div class="tip-q">Q4</div>
+        <div class="tip-body"><strong>¿Qué muestra la matriz de confusión normalizada?</strong><br>La diagonal muestra el recall por clase. Clases con baja diagonal son las que el modelo confunde más, candidatas a mejoras con balanceo o augmentation específico.</div>
       </div>
-
       <div class="tip">
-        <div class="tip-icon">❓</div>
-        <div class="tip-text"><strong>¿Por qué usar categorical cross-entropy y no MSE?</strong><br>
-        MSE (error cuadrático) no está diseñada para clasificación. Categorical CE penaliza correctamente cuando el modelo asigna baja probabilidad a la clase correcta, y funciona bien con softmax en problemas multiclase.</div>
+        <div class="tip-q">Q5</div>
+        <div class="tip-body"><strong>¿Por qué Categorical CE y no MSE?</strong><br>MSE no está diseñada para clasificación. Categorical CE penaliza correctamente cuando el modelo asigna baja probabilidad a la clase correcta, y funciona bien con softmax en multiclase.</div>
       </div>
-
       <div class="tip">
-        <div class="tip-icon">❓</div>
-        <div class="tip-text"><strong>¿Cómo se seleccionó el modelo final?</strong><br>
-        Por 4 criterios combinados: mayor accuracy y F1 en test set, menor brecha train-val (mejor generalización), estabilidad en curvas de entrenamiento, y buena relación rendimiento/parámetros. Ganó ResNet-style con lr óptimo y augmentation completo.</div>
+        <div class="tip-q">Q6</div>
+        <div class="tip-body"><strong>¿Cómo se eligió el modelo final?</strong><br>Por 4 criterios: mayor accuracy y F1 en test, menor brecha train-val, curvas estables y buena relación rendimiento/parámetros. Ganó ResNet con lr óptimo y augmentation completo.</div>
       </div>
-
       <div class="tip">
-        <div class="tip-icon">❓</div>
-        <div class="tip-text"><strong>¿Qué es GlobalAveragePooling y por qué usarlo?</strong><br>
-        Promedia cada feature map completa a un único valor. Reemplaza a Flatten+Dense, reduce drásticamente los parámetros, y actúa como regularizador natural al eliminar conexiones redundantes. Más robusto ante overfitting.</div>
+        <div class="tip-q">Q7</div>
+        <div class="tip-body"><strong>¿Qué es GlobalAveragePooling y por qué usarlo?</strong><br>Promedia cada feature map entera a un solo valor. Reemplaza Flatten+Dense, reduce parámetros drásticamente y actúa como regularizador. Más robusto contra overfitting.</div>
       </div>
-
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- SECCIÓN 7: CONCLUSIONES -->
+  <!-- 7. CONCLUSIONES -->
   <div class="section">
     <div class="section-title"><span class="num">7</span> Conclusiones del proyecto</div>
     <div class="conc-list">
       <div class="conc-item">
         <span class="conc-check">✓</span>
-        <div class="conc-text">Las <strong>CNNs son la arquitectura correcta</strong> para este problema: capturan jerarquías visuales que una red densa no puede representar de forma eficiente.</div>
+        <div class="conc-text">Las <strong>CNNs son la arquitectura correcta</strong>: capturan jerarquías visuales que una red densa no puede representar eficientemente.</div>
       </div>
       <div class="conc-item">
         <span class="conc-check">✓</span>
@@ -849,20 +694,19 @@
       </div>
       <div class="conc-item">
         <span class="conc-check">✓</span>
-        <div class="conc-text"><strong>BatchNorm + Dropout + Data Augmentation</strong> fueron claves para reducir el overfitting en un dataset con alta variabilidad visual.</div>
+        <div class="conc-text"><strong>BatchNorm + Dropout + Data Augmentation</strong> fueron clave para reducir overfitting en un dataset con alta variabilidad visual.</div>
       </div>
-      <div class="conc-item" style="border-color: var(--purple)">
+      <div class="conc-item" style="border-color:var(--purple)">
         <span class="conc-check" style="color:var(--purple)">→</span>
-        <div class="conc-text"><strong>Mejoras futuras:</strong> Transfer Learning (EfficientNet / MobileNet), mayor resolución (128×128 en vez de 64×64), balanceo de clases y ensemble de modelos.</div>
+        <div class="conc-text"><strong>Mejoras futuras:</strong> Transfer Learning (EfficientNet / MobileNet), resolución 128×128, balanceo de clases y ensemble de modelos.</div>
       </div>
     </div>
   </div>
 
   <div class="footer">
-    Guía generada para la Evaluación Parcial N°2 · Deep Learning DLY0100 · Duoc UC<br>
-    <span style="color:var(--yellow)">¡Mucho éxito mañana! 🍩</span>
+    Evaluación Parcial N°2 · Deep Learning DLY0100 · Duoc UC<br>
+    <span style="color:var(--yellow)">¡Éxito mañana! 🍩</span>
   </div>
 
-</div>
 </body>
 </html>
